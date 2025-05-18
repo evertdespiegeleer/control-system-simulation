@@ -12,21 +12,21 @@ import { FirstOrderPlant } from "./generic-model/plant.ts";
 const a = 0.1608 * 8.09325 * 4 / 0.0036;
 
 export const rollRatePlant = new FirstOrderPlant({
-    lagTimeConstant: 0.0001,
+    lagTimeConstant: 0.001,
     noiseFactor: 0.001,
     gain: a,
 })
 
 export const rollRateMeasurement = new PlantOutputMeasurement({
     // 0.15s delay between actual roll rate and measurement
-    delay: 0.015,
+    delay: 0.05,
     // 2 deg/s error
-    noiseFactor: 2,
+    noiseFactor: 4,
 })
 
 export const controlLoop = new ControlLoop({
     integralLimit: 25,
-    kp: 0.1 * 0.45,
-    ki: 0.1 * 0,
-    kd: 0.1 * 0.0000,
+    kp: 0.01 * 0.25,
+    ki: 0.01 * 0,
+    kd: 0.01 * 0.0002,
 })

@@ -11,7 +11,7 @@ const makeSetPoint = (time: number) => {
 }
 
 export const runSimulation = (plant: InstanceType<typeof FirstOrderPlant>, measurement: InstanceType<typeof PlantOutputMeasurement>, controller: InstanceType<typeof ControlLoop>) => {
-    console.log(`Time(s),Set Point,Error,Control,Output`);
+    console.log(`Time(s),Set Point,Measured Output,Error,Control,Output`);
     let previousPlantInput = 0;
     for (let t = 0; t < simulationTime; t += dt) {
         const setPoint = makeSetPoint(t);
@@ -21,6 +21,6 @@ export const runSimulation = (plant: InstanceType<typeof FirstOrderPlant>, measu
         const error = setPoint - measurementOutput.output;
         const control = controller.calculatePIDControl(error, t);
         previousPlantInput = control.control;
-        console.log(`${t},${setPoint},${error},${control.control},${plantOutput.output}`);
+        console.log(`${t},${setPoint},${measurementOutput.output},${error},${control.control},${plantOutput.output}`);
     }
 }
