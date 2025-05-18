@@ -11,7 +11,7 @@ const makeSetPoint = (time: number) => {
 }
 
 export const runSimulation = (plant: InstanceType<typeof FirstOrderPlant>, measurement: InstanceType<typeof PlantOutputMeasurement>, controller: InstanceType<typeof ControlLoop>) => {
-    console.log(`Time(s),Set Point,Error,Cotnrol,Output`);
+    console.log(`Time(s),Set Point,Error,Control,Output`);
     let previousPlantInput = 0;
     for (let t = 0; t < simulationTime; t += dt) {
         const setPoint = makeSetPoint(t);
