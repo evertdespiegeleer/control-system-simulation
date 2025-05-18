@@ -1,4 +1,4 @@
-import { FirstOrderProcess } from "./model.ts";
 import { runSimulation } from "./runner.ts";
+import { controlLoop, rollRateMeasurement, rollRatePlant } from "./uav.ts";
 
-runSimulation(new FirstOrderProcess());
+runSimulation(rollRatePlant, rollRateMeasurement, controlLoop);
